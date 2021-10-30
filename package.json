@@ -1,0 +1,26 @@
+{
+  "name": "zoom-clone",
+  "version": "1.0.0",
+  "description": "Create a Zoom Clone with nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wildenali/zoom-clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wildenali/zoom-clone/issues"
+  },
+  "homepage": "https://github.com/wildenali/zoom-clone#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "socket.io": "^4.3.1",
+    "uuid": "^8.3.2"
+  }
+}
