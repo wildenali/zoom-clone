@@ -53,3 +53,5 @@ Create a Zoom Clone with nodejs
 11. Inside 'public' create file 'script.js'
 12. Install SocketIO
     - npm install socket.io
+13. Install Peer
+    - npm install peer
