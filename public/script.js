@@ -26,14 +26,31 @@ navigator.mediaDevices.getUserMedia({
             addVideoStream(video, userVideoStream)
         })
     })
-
+    
     
     socket.on('user-connected', (userId) => {
         console.log('masuk')
         setTimeout(connecToNewUser,2000,userId,stream);
         // connecToNewUser(userId, stream);
     })
+
+    let text = $('input')
+    // console.log(text)
+    
+    $('html').keydown((e) => {
+        if(e.which == 13 && text.val().length !== 0) {
+            console.log(text.val())
+            socket.emit('message', text.val());
+            text.val('');
+        }
+    })
+    
+    socket.on('createMessage', message => {
+        // console.log('this is comming from server: ', message)
+        $('.messages').append(`<li class="message"><b>user</b><br/>${message}</li>`)
+    })
 })
+
 
 peer.on('open', id => {
     // console.log(id)
@@ -61,13 +78,7 @@ const addVideoStream = (video, stream) => {
     videoGrid.append(video);
 }
 
-let text = $('input')
-console.log(text)
-
-$('html').keydown((e) => {
-    if(e.which == 13 && text.val().length !== 0) {
-        console.log(text.val())
-        socket.emit('message', text.val());
-        text.val('');
-    }
-})
+const scrollToBottom = () => {
+    let d = $('.main__chat_window');
+    d.scrollTop(d.prop("scrollHeight"));
+}

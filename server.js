@@ -3,7 +3,8 @@ const app = express();
 const server = require('http').Server(app);
 const { v4: uuidv4 } = require('uuid');
 const io = require('socket.io')(server)
-const { ExpressPeerServer } = require('peer')
+const { ExpressPeerServer } = require('peer');
+const { on } = require('events');
 const peerServer = ExpressPeerServer(server, {
     debug: true
 })
@@ -28,6 +29,10 @@ io.on('connection', socket => {
         socket.join(roomId);
         // socket.to(roomId).broadcast.emit('user-connected');  // ini versi socket io lama
         socket.broadcast.to(roomId).emit('user-connected', userId);     // ini versi "socket.io": "^4.3.1"
+
+        socket.on('message', message => {
+            io.to(roomId).emit('createMessage', message);
+        })
     })
 })
 
