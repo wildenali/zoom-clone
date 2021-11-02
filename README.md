@@ -55,3 +55,5 @@ Create a Zoom Clone with nodejs
     - npm install socket.io
 13. Install Peer
     - npm install peer
+14. Install heroku to deploy
+    - npm install -g heroku
